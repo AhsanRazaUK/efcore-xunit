@@ -9,13 +9,15 @@ namespace Library.UnitTests
     public class GenericRepositoryTest
     {
         [Fact]
-        public void AddAsync_Book_RightRecord()
+        public void SaveAsync_Book_RightRecord()
         {
             var helper = new TestHelper();
 
+            // Repositories with InMemory Database
             var readyRepo = helper.GetInMemoryReadRepository();
             var writeRepo = helper.GetInMemoryWriteRepository();
 
+            // use Write Repository to add mock data
             writeRepo.AddAsync(new Book()
             {
                 BookName = "Hamlet",
@@ -23,16 +25,21 @@ namespace Library.UnitTests
                 Category = new Category() { CategoryName = "Drama" }
             });
 
+            // Commit insert
             writeRepo.SaveAsyn().GetAwaiter();
 
+            // use Specification in Read Repository and get data
             var result = readyRepo.GetAsync(new
                 BookWithAuthorAndCategorySpecification()).Result;
 
+            // Assert
+            Assert.NotNull(result);
             Assert.Equal("Hamlet", result.BookName);
             Assert.Equal("William", result.Author.FirstName);
             Assert.Equal("Shakespear", result.Author.LastName);
             Assert.Equal("Drama", result.Category.CategoryName);
         }
+
         [Fact]
         public void GetAll_Authors_Count()
         {
@@ -63,6 +70,7 @@ namespace Library.UnitTests
             var result = readyRepo.GetAsync(new AuthorSpecification("William")).Result;
             Assert.Equal("Shakespear", result.LastName);
         }
+
         [Fact]
         public void GetByIdAsync_Books_RightName()
         {

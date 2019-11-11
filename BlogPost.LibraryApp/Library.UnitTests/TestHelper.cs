@@ -31,7 +31,7 @@ namespace Library.UnitTests
             return new GenericWriteRepository(libraryDbContext);
         }
 
-        public List<Author> GetMockAuthors()
+        public IEnumerable<Author> GetMockAuthors()
         {
             return new List<Author>()
             {
@@ -41,7 +41,7 @@ namespace Library.UnitTests
             };
         }
 
-        public List<Book> GeMockBooks()
+        public IEnumerable<Book> GeMockBooks()
         {
             return new List<Book>() {
                 {new Book()

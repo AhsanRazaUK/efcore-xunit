@@ -9,5 +9,11 @@ namespace Library.Core.Specifications.Books
             AddInclude(b => b.Author);
             AddInclude(b => b.Category);
         }
+        public BookWithAuthorAndCategorySpecification(string filter) :
+            base(b => b.BookName.Contains(filter))
+        {
+            AddInclude(b => b.Author);
+            AddInclude(b => b.Category);
+        }
     }
 }
