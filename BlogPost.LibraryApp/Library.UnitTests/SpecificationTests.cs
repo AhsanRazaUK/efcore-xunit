@@ -11,7 +11,7 @@ namespace Library.UnitTests
         public void BookWithAuthorAndCategorySpecification_UseSpec()
         {
             var helper = new TestHelper();
-            var mockBooks = helper.GeMockBooks().AsQueryable();
+            var mockBooks = helper.GetMockBooks().AsQueryable();
             var spec = new BookWithAuthorAndCategorySpecification("Bleak");
 
             var result = mockBooks.FirstOrDefault(spec.Criteria);

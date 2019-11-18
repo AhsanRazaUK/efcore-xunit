@@ -79,7 +79,7 @@ namespace Library.UnitTests
             var readyRepo = helper.GetInMemoryReadRepository();
             var writeRepo = helper.GetInMemoryWriteRepository();
 
-            var books = helper.GeMockBooks();
+            var books = helper.GetMockBooks();
 
             writeRepo.InsertAsync(books).GetAwaiter();
 

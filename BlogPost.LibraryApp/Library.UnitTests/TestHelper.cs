@@ -40,8 +40,13 @@ namespace Library.UnitTests
                 { new Author(){ Id = 3, FirstName = "George", LastName = "Eliot"} }
             };
         }
-
-        public IEnumerable<Book> GeMockBooks()
+        /// <summary>
+        /// Mock data for Books.
+        /// Total Records : 3
+        /// First Record : BookName = Hamlet
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Book> GetMockBooks()
         {
             return new List<Book>() {
                 {new Book()
